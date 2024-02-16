@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import Calculator from './component/Calculater';
+
 
 function App() {
   return (
