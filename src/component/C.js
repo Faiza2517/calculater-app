@@ -1,71 +1,80 @@
-import React, { useState, useEffect } from 'react';
-import './style.css'; // Import CSS file for styling
+import React, { useState } from 'react'
+import './style.css';
 
-const Calcul = () => {
-
-  const [input, setInput] = useState('');
-  const [history, setHistory] = useState([]);
-
-
-  const handleClear = () => {
-    setInput('');
-  };
-
-  const handleDelete = () => {
-    setInput(prevDisplay => prevDisplay.slice(0, -1));
-  };
-
-  const handleAddition = () => {
-    setInput(prevInput => prevInput + '+');
-  };
-
-  const handleSubtraction = () => {
-    setInput(prevInput => prevInput + '-');
-  };
-
-  const handleMultiplication = () => {
-    setInput(prevInput => prevInput + '*');
-  };
-
-  const handleDivision = () => {
-    setInput(prevInput => prevInput + '/');
-  };
-
-  const handleEquals = () => {
-    try {
-      const result = eval(input);
-      setInput(result.toString());
-      setHistory(prevHistory => [...prevHistory, { expression: input, result }]);
-    } catch (error) {
-      setInput('Error');
+export const C = () => {
+    const [first,setFirst]= useState('');
+    const [second,setSecond]=useState('');
+    const [history, setHistory] = useState([]);
+    let result;
+let operator;
+    const handleClick=(value)=>{
+        handleButton();
+        first=parseFloat(value);
+        second=parseFloat(value)
+        if(operator == '*'){
+          result=  first * second;
+        }
+        else if(operator == '+'){
+          result=  first + second;
+        }
+        else if(operator == '-'){
+          result=  first - second;
+        }
+        else if(operator == '/'){
+          result=  first / second;
+        }
+        else{
+          result=  first = second;
+        }
+        setHistory(prevHistory => [...prevHistory, { expression: first, result }]);
     }
-  };
-
-  const handleButton = (value) => {
-    if (value === 'clear') {
-      handleClear();
-    } else if (value === 'delete') {
-      handleDelete();
-    } else if (value === '+') {
-      handleAddition();
-    } else if (value === '-') {
-      handleSubtraction();
-    } else if (value === '*') {
-      handleMultiplication();
-    } else if (value === '/') {
-      handleDivision();
-    } else if (value === '=') {
-      handleEquals();
-    } else {
-      setInput(prevInput => prevInput + value);
-    }
-  };
-
+    const handleClear = () => {
+        setFirst('');
+      };
+    
+      const handleDelete = () => {
+        setFirst(prevDisplay => prevDisplay.slice(0, -1));
+      };
+    
+      const handleAddition = () => {
+        setFirst(prevInput => prevInput + '+');
+      };
+    
+      const handleSubtraction = () => {
+        setFirst(prevInput => prevInput + '-');
+      };
+    
+      const handleMultiplication = () => {
+        setFirst(prevInput => prevInput + '*');
+      };
+    
+      const handleDivision = () => {
+        setFirst(prevInput => prevInput + '/');
+      };
+      const handleButton = (value) => {
+        if (value === 'clear') {
+          handleClear();
+        } else if (value === 'delete') {
+          handleDelete();
+        } else if (value === '+') {
+          handleAddition();
+        } else if (value === '-') {
+          handleSubtraction();
+        } else if (value === '*') {
+          handleMultiplication();
+        } else if (value === '/') {
+          handleDivision();
+        } else if (value === '=') {
+          handleClick();
+        } else {
+          setFirst(prevInput => prevInput + value);
+        }
+      };
   return (
     <div className='container'>
   <div className='card'>
     <div className='display'>
-      <input value={input} readOnly />
+      <input value={first} readOnly />
     </div>
     <table className='buttons'>
       <tbody>
@@ -113,7 +122,5 @@ const Calcul = () => {
   </div>
 </div>
 
-  );
-};
-
-export default Calcul;
+  )
+}

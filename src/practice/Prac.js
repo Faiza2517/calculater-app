@@ -28,7 +28,7 @@ export const Prac=()=>{
         <button onClick={handleIncrement}>Increment</button>
 
         <br></br>
-        <button onClickCapture={()=>setIsDarkMode(!isDarkMode)}>ChangeTheme</button>
+        <button onClick={()=>setIsDarkMode(!isDarkMode)}>ChangeTheme</button>
         </div>
     )
 }
