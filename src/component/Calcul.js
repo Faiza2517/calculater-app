@@ -5,6 +5,7 @@ const Calcul = () => {
 
   const [input, setInput] = useState('');
   const [history, setHistory] = useState([]);
+  const [result,setResult]=useState();
 
   const handleClear = () => {
     setInput('');
