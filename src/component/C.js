@@ -20,22 +20,28 @@ let operator;
         else if(operator == '-'){
           result=  first - second;
         }
-        else if(operator == '/'){
-          result=  first / second;
-        }
-        else{
-          result=  first = second;
-        }
-        setHistory(prevHistory => [...prevHistory, { expression: first, result }]);
-    }
-    const handleClear = () => {
-        setFirst('');
-      };
     
-      const handleDelete = () => {
-        setFirst(prevDisplay => prevDisplay.slice(0, -1));
-      };
-    
+    const handleEqual=()=>{
+      try{
+        let result;
+        const firstnum=parseFloat(num1);
+        const secondnum=parseFloat(num2);
+        switch(operator){
+          case '+':
+            result=firstnum + secondnum;
+          break;
+          case '-':
+            result=firstnum - secondnum;
+          break;
+          case '*':
+            result=firstnum * secondnum;
+          break;
+          case '/':
+            result=firstnum / secondnum;
+          break;
+          default:
+            return;
+
       const handleAddition = () => {
         setFirst(prevInput => prevInput + '+');
       };
@@ -44,9 +50,6 @@ let operator;
         setFirst(prevInput => prevInput + '-');
       };
     
-      const handleMultiplication = () => {
-        setFirst(prevInput => prevInput + '*');
-      };
     
       const handleDivision = () => {
         setFirst(prevInput => prevInput + '/');
